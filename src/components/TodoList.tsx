@@ -20,6 +20,10 @@ export class TodoList extends React.Component<Props, State> {
 
   // 3. DOM へのマウントが完了する (input 要素への参照が既に存在する)
   public componentDidMount() {
+    this.focus();
+  }
+
+  public focus() {
     if (this.input) {
       this.input.focus();
     }
