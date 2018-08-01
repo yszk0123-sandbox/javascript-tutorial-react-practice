@@ -16,6 +16,16 @@ export class TodoList extends React.Component<Props, State> {
     title: ''
   };
 
+  private input: HTMLInputElement | null = null;
+
+  // 3. DOM へのマウントが完了する (input 要素への参照が既に存在する)
+  public componentDidMount() {
+    if (this.input) {
+      this.input.focus();
+    }
+  }
+
+  // 1. render が呼ばれる
   public render() {
     const { todos } = this.props;
     const { title } = this.state;
@@ -24,7 +34,15 @@ export class TodoList extends React.Component<Props, State> {
       <React.Fragment>
         <div>{todos.map(this.renderTodo)}</div>
         <div>
-          <input type="text" value={title} onChange={this.handleChangeTitle} />
+          <input
+            type="text"
+            value={title}
+            onChange={this.handleChangeTitle}
+            // 2. input 要素が作成される
+            // onMount のようなイベントハンドラと考えるとわかりやすい
+            // input 要素が作成された時点でこのDOM要素を引数にハンドラが呼ばれる
+            ref={input => (this.input = input)}
+          />
           <button onClick={this.handleAddTodo}>Add</button>
         </div>
       </React.Fragment>
