@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fetchTodos } from '../apis/fetchTodos';
+import { fetchTodos } from '../apis';
 import { TodoList } from '../components/TodoList';
 import { Todo } from '../types';
 
