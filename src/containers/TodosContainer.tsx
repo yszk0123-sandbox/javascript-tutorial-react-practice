@@ -21,9 +21,9 @@ export class TodosContainer extends React.Component<Props, State> {
 
   public async componentDidMount() {
     try {
-      const { data } = await fetchTodos();
+      const todos = await fetchTodos();
 
-      this.setState({ todos: data, loading: false });
+      this.setState({ todos, loading: false });
     } catch (error) {
       alert(error);
     }
