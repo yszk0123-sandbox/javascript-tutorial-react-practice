@@ -8,27 +8,33 @@ interface Props {}
 
 interface State {
   todos: Todo[];
+  loading: boolean;
 }
 
 export class TodosContainer extends React.Component<Props, State> {
   private todoList: TodoList | null = null;
 
   public state: State = {
-    todos: []
+    todos: [],
+    loading: true
   };
 
   public async componentDidMount() {
     try {
       const { data } = await fetchTodos();
 
-      this.setState({ todos: data });
+      this.setState({ todos: data, loading: false });
     } catch (error) {
       alert(error);
     }
   }
 
   public render() {
-    const { todos } = this.state;
+    const { todos, loading } = this.state;
+
+    if (loading) {
+      return <div>Loading...</div>;
+    }
 
     return (
       <React.Fragment>
