@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "run-p start:*",
+    "start:parcel": "parcel src/index.html",
+    "start:server": "json-server --port 4000 --watch db.json"
   },
   "devDependencies": {
     "@types/react": "^16.4.7",
