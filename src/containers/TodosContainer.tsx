@@ -2,7 +2,7 @@ import * as React from 'react';
 import { addTodo, fetchTodos } from '../apis';
 import { ControlPanel } from '../components/ControlPanel';
 import { TodoList } from '../components/TodoList';
-import { Todo } from '../types';
+import { Todo } from '../types/CommonTypes';
 
 interface Props {}
 

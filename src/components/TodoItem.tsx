@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Todo } from '../types';
+import { Todo } from '../types/CommonTypes';
 
 /**
  * データの変換にはいくつか種類がある
