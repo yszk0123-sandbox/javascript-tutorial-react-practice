@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { RootState } from '../reducers/rootReducer';
+import { getTodos } from '../selectors/getTodos';
 import { Todo } from '../types/CommonTypes';
 import { Todos } from './Todos';
 
@@ -14,7 +15,7 @@ export interface Props {
 export interface State {}
 
 const mapStateToProps = (state: RootState) => {
-  const { todos, loading } = state.todos;
+  const { todos, loading } = getTodos(state);
 
   return {
     todos,
