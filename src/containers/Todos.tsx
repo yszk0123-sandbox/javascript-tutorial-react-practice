@@ -1,36 +1,19 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
 import { ControlPanel } from '../components/ControlPanel';
 import { TodoList } from '../components/TodoList';
-import { RootState } from '../reducers/rootReducer';
-import { Todo } from '../types/CommonTypes';
+import { Props, State } from './TodosContainer';
 
-interface Props {
-  todos: Todo[];
-  loading: boolean;
-  addTodo: Function;
-  fetchTodos: Function;
-}
-
-interface State {}
-
-class Todos extends React.Component<Props, State> {
+export class Todos extends React.Component<Props, State> {
   private todoList: TodoList | null = null;
-
   public componentDidMount() {
     const { fetchTodos } = this.props;
-
     fetchTodos();
   }
-
   public render() {
     const { todos, loading } = this.props;
-
     if (loading) {
       return <div>Loading...</div>;
     }
-
     return (
       <React.Fragment>
         <TodoList
@@ -45,7 +28,6 @@ class Todos extends React.Component<Props, State> {
 
   private handleAddTodo = (title: string) => {
     const { addTodo } = this.props;
-
     addTodo(title);
   };
 
@@ -55,22 +37,3 @@ class Todos extends React.Component<Props, State> {
     }
   };
 }
-
-const mapStateToProps = (state: RootState) => {
-  const { todos, loading } = state.todos;
-
-  return {
-    todos,
-    loading
-  };
-};
-
-const mapDispatchToProps = {
-  addTodo: actions.addTodo,
-  fetchTodos: actions.fetchTodos
-};
-
-export const TodosContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Todos);
