@@ -1,7 +1,7 @@
 {
   "name": "javascript-tutorial-react-practice",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.tsx",
   "license": "MIT",
   "scripts": {
     "start": "run-p start:*",
